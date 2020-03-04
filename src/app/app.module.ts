@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -8,20 +9,23 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './material/material.module';
 import { TodosComponent } from './todos/todos.component';
 import { TodoDetailsComponent } from './todos/todo-details/todo-details.component';
 import { TodosListComponent } from './todos/todos-list/todos-list.component';
-import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent, TodosComponent, TodoDetailsComponent, TodosListComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
     IonicModule.forRoot(),
     FormsModule,
-    IonicModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    AppRoutingModule,
   ],
   providers: [
     StatusBar,
