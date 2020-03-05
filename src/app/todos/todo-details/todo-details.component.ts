@@ -15,9 +15,14 @@ export class TodoDetailsComponent implements OnInit {
     this.initForm();
   }
 
+  // saveTodo(todo) {
+  //   todo.id ? this.
+  // }
+
   submit(directive: NgForm) {
     if (this.form.valid) {
-      
+      this.saveTodo(this.form.valid);
+      directive.resetForm();
     }
   }
 
