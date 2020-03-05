@@ -1,3 +1,47 @@
-<p>
-  todo-details works!
-</p>
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        Todo List
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+  
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Todo List</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <button mat-mini-fab [routerLink]="['/todos']">
+        <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+
+    <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+          <ion-card-title>Card Title</ion-card-title>
+        </ion-card-header>
+      
+        <form [formGroup]="form" (submit)="submit(form)" #form="ngform">
+            <ion-card-content>
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" placeholder="Enter Name" formControlName="name">
+                    <mat-error>Please, enter the todo's name</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput type="text" placeholder="Enter Name" formControlName="description"></textarea>
+                    <mat-error>Please, enter the todo's description</mat-error>
+                </mat-form-field>
+            </ion-card-content>
+            <mat-card-actions>
+                <ion-button type="submit">
+                    {{ determineUpdate() ? 'Update' : 'Submit' }}
+                </ion-button>
+                <ion-button type="reset" (click)="cancel()">Cancel</ion-button>
+            </mat-card-actions>
+        </form>
+      </ion-card>
+</ion-content>

@@ -1,9 +1,36 @@
-<p>
-  todos-list works!
-</p>
-<ion-list>
-  <ion-item>
-      <ion-label></ion-label>
-      <p></p>
-  </ion-item>
+<ion-list class="d-flex flex-column align-items-stretch">
+    <ion-item *ngFor="let todo of todos">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div *ngIf="!completed; else strikethrough">
+                Todo Name
+              </div>
+              <ng-template #strikethrough>
+                <p class="bold">Completed</p>
+                <p class="strikethrough">Todo Name</p>
+              </ng-template>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <p>Details about the task</p>
+          <div class="d-flex flex-column align-items-start">
+            <mat-checkbox [(ngModel)]="completed">Is the task complete?</mat-checkbox>
+            <button mat-button [routerLink]="['/todos/details']">Edit task</button>
+            <button mat-button>Delete</button>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </ion-item>
 </ion-list>
+
+<ion-fab 
+  shape="round"
+  vertical="bottom" 
+  horizontal="end"
+  slot="fixed">
+    <ion-fab-button [routerLink]="['/details']">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
