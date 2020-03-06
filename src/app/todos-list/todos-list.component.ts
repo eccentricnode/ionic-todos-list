@@ -6,7 +6,14 @@ import { Router } from '@angular/router';
   templateUrl: './todos-list.component.html',
   styleUrls: ['./todos-list.component.scss'],
 })
-export class TodosListComponent {
+export class TodosListComponent implements OnInit{
   @Input() todos;
   @Output() deleted = new EventEmitter();
+
+  ngOnInit() { }
+
+  constructor(
+    private router: Router
+  ) { }
+
 }

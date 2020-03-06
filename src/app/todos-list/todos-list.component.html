@@ -1,5 +1,5 @@
 <ion-list class="d-flex flex-column align-items-stretch">
-    <ion-item *ngFor="let todo of todos">
+    <ion-item *ngFor="let todo of todos" (onClick)=[routerLink]="['/todo.id']">
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -30,7 +30,7 @@
   vertical="bottom" 
   horizontal="end"
   slot="fixed">
-    <ion-fab-button [routerLink]="['/details']">
+    <ion-fab-button routerLink="/newTodo">
       <ion-icon name="add-circle-outline"></ion-icon>
     </ion-fab-button>
 </ion-fab>

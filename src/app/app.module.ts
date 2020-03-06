@@ -11,20 +11,19 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material/material.module';
-import { TodosComponent } from './todos/todos.component';
-import { TodoDetailsComponent } from './todos/todo-details/todo-details.component';
-import { TodosListComponent } from './todos/todos-list/todos-list.component';
+import { TodoDetailsComponent } from './todo-details/todo-details.component';
+import { TodosListComponent } from './todos-list/todos-list.component';
 
 @NgModule({
-  declarations: [AppComponent, TodosComponent, TodoDetailsComponent, TodosListComponent],
+  declarations: [AppComponent, TodoDetailsComponent, TodosListComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    IonicModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
+    IonicModule.forRoot(),
+    MaterialModule,
     AppRoutingModule,
   ],
   providers: [

@@ -12,17 +12,17 @@
         <ion-title size="large">Todo List</ion-title>
       </ion-toolbar>
     </ion-header>
-    <button mat-mini-fab [routerLink]="['/todos']">
+    <button mat-mini-fab routerLink="/list">
         <mat-icon>keyboard_backspace</mat-icon>
     </button>
 
     <ion-card>
         <ion-card-header>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
           <ion-card-title>Card Title</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
         </ion-card-header>
       
-        <form [formGroup]="form" (submit)="submit(form)" #form="ngform">
+        <form [formGroup]="form" (submit)="submit(form.value)" #formDir="ngForm">
             <ion-card-content>
                 <mat-form-field appearance="outline">
                     <mat-label>Name</mat-label>
@@ -35,13 +35,12 @@
                     <textarea matInput type="text" placeholder="Enter Name" formControlName="description"></textarea>
                     <mat-error>Please, enter the todo's description</mat-error>
                 </mat-form-field>
+                
+                <div>
+                  <ion-button type="submit">Submit</ion-button>
+                  <ion-button type="reset" (click)="cancel()">Cancel</ion-button>
+                </div>
             </ion-card-content>
-            <mat-card-actions>
-                <ion-button type="submit">
-                    {{ determineUpdate() ? 'Update' : 'Submit' }}
-                </ion-button>
-                <ion-button type="reset" (click)="cancel()">Cancel</ion-button>
-            </mat-card-actions>
         </form>
       </ion-card>
 </ion-content>
