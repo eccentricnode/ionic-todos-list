@@ -24,12 +24,8 @@ export class TodoDetailsComponent implements OnInit {
     this.form.reset();
   }
 
-  // validateField(control: string, directive: NgForm) {
-  //   return this.form.get(control).invalid && directive.submitted;
-  // }
-
-  determineUpdate() {
-    return !!this.form.value.id;
+  validateField(control: string, directive: NgForm) {
+    return this.form.get(control).invalid && directive.submitted;
   }
 
   private initForm() {

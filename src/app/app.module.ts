@@ -13,10 +13,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material/material.module';
 import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { TodosListComponent } from './todos-list/todos-list.component';
+import { TodosService } from './services/todos.service';
+import { EditModalComponent } from './shared/edit-modal/edit-modal.component';
 
 @NgModule({
-  declarations: [AppComponent, TodoDetailsComponent, TodosListComponent],
-  entryComponents: [],
+  declarations: [AppComponent, EditModalComponent, TodoDetailsComponent, TodosListComponent],
+  entryComponents: [EditModalComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -29,6 +31,7 @@ import { TodosListComponent } from './todos-list/todos-list.component';
   providers: [
     StatusBar,
     SplashScreen,
+    TodosService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
