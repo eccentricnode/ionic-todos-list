@@ -8,18 +8,18 @@
   
 <ion-content [fullscreen]="true">
 
-        <form [formGroup]="group" (submit)="submit(form)" #form="ngForm">
+        <form [formGroup]="group" (submit)="submit(formDir)" #formDir="ngForm">
             <ion-card-content class="d-flex flex-column">
                 <mat-form-field appearance="outline">
                     <mat-label>Name</mat-label>
                     <input matInput type="text" placeholder="Enter Name" formControlName="name">
-                    <mat-error *ngIf="validateField('name', form)">Please, enter the todo's name</mat-error>
+                    <mat-error *ngIf="validateField('name', formDir)">Please, enter the todo's name</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Description</mat-label>
                     <textarea matInput type="text" placeholder="Enter Name" formControlName="description"></textarea>
-                    <mat-error *ngIf="validateField('description', form)">Please, enter the todo's description</mat-error>
+                    <mat-error *ngIf="validateField('description', formDir)">Please, enter the todo's description</mat-error>
                 </mat-form-field>
                 
                 <div>

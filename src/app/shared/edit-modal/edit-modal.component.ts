@@ -29,7 +29,7 @@ export class EditModalComponent {
   ) { }
 
 
-  submit(directive: NgForm) {
+  submit(directive) {
     this.submittedValue = this.group.value;
     directive.resetForm();
     console.log(this.submittedValue);
@@ -40,7 +40,7 @@ export class EditModalComponent {
     this.group.reset();
   }
 
-  validateField(control: string, directive: NgForm) {
+  validateField(control: string, directive) {
     return this.group.get(control).invalid && directive.submitted;
   }
 
