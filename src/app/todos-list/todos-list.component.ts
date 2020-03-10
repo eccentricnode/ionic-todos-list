@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ModalController } from '@ionic/angular';
-import { NavParams } from '@ionic/angular';
 
 import { EditModalComponent } from '../shared/edit-modal/edit-modal.component';
 
@@ -11,26 +10,44 @@ import { EditModalComponent } from '../shared/edit-modal/edit-modal.component';
   templateUrl: './todos-list.component.html',
   styleUrls: ['./todos-list.component.scss'],
 })
-export class TodosListComponent implements OnInit{
-  @Input() todos;
-  @Output() deleted = new EventEmitter();
+export class TodosListComponent implements OnInit {
+  form: FormGroup;
 
-  ngOnInit() { }
+  todos;
+
+  ngOnInit() {
+    this.initForm();
+    console.log(this.todos);
+  }
 
   constructor(
-    private router: Router,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private formBuilder: FormBuilder
   ) { }
 
   async generateModal() {
     const modal = await this.modalController.create({
       component: EditModalComponent,
       componentProps: {
-        foo: 'hello',
-        bar: 'world'
+        form: this.form
       }
     });
+
+    // grabs form value from modal, on modal dismiss
+    modal.onWillDismiss()
+      .then((data) => {
+        this.todos = data;
+      });
+
     return await modal.present();
+  }
+
+  private initForm() {
+    this.form = this.formBuilder.group({
+      id: null,
+      name: ['', Validators.compose([Validators.required])],
+      description: ['', Validators.compose([Validators.required])]
+    });
   }
 
 }

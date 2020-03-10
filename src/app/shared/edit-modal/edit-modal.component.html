@@ -1,2 +1,33 @@
-<h1>MOdal PAGE</h1>
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        Update/Create Todo
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+  
+<ion-content [fullscreen]="true">
+
+        <form [formGroup]="form" (submit)="submit(form)">
+            <ion-card-content class="d-flex flex-column">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" placeholder="Enter Name" formControlName="name">
+                    <mat-error>Please, enter the todo's name</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput type="text" placeholder="Enter Name" formControlName="description"></textarea>
+                    <mat-error>Please, enter the todo's description</mat-error>
+                </mat-form-field>
+                
+                <div>
+                  <ion-button type="submit">Submit</ion-button>
+                  <ion-button type="reset" (click)="cancel()">Cancel</ion-button>
+                </div>
+            </ion-card-content>
+        </form>
+</ion-content>
+
 <ion-button mat-button (click)="dismiss()">Dismiss</ion-button>

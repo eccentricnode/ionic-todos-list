@@ -1,22 +1,17 @@
 <ion-list class="d-flex flex-column align-items-stretch">
-    <ion-item *ngFor="let todo of todos" (onClick)=[routerLink]="['/todo.id']">
+    <ion-item *ngFor="let todo of todos">
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <div *ngIf="!completed; else strikethrough">
+              <div>
                 Todo Name
               </div>
-              <ng-template #strikethrough>
-                <p class="bold">Completed</p>
-                <p class="strikethrough">Todo Name</p>
-              </ng-template>
             </mat-panel-title>
           </mat-expansion-panel-header>
 
           <p>Details about the task</p>
           <div class="d-flex flex-column align-items-start">
-            <mat-checkbox [(ngModel)]="completed">Is the task complete?</mat-checkbox>
             <button mat-button [routerLink]="['/todos/details']">Edit task</button>
             <button mat-button>Delete</button>
           </div>
