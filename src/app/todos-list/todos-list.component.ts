@@ -13,7 +13,7 @@ import { EditModalComponent } from '../shared/edit-modal/edit-modal.component';
 export class TodosListComponent implements OnInit {
   form: FormGroup;
 
-  todos;
+  todos = [];
 
   ngOnInit() {
     this.initForm();
@@ -36,11 +36,50 @@ export class TodosListComponent implements OnInit {
     // grabs form value from modal, on modal dismiss
     modal.onWillDismiss()
       .then((data) => {
-        this.todos = data['data'];
-        console.log(this.todos);
+        this.submit(data['data']);
       });
 
     return await modal.present();
+  }
+
+  selectItem(item) {
+    return this.todos.filter(i => i.id === item)
+  }
+
+  submit(todo) {
+    return (todo.id ? this.updateTodo(todo) : this.createTodo(todo));
+  }
+
+  createTodo(todo) {
+    console.log(todo);
+    const newTodo = this.generateId(todo);
+    console.log(newTodo);
+    this.todos.push(newTodo);
+  }
+
+  updateTodo(todo) {
+    console.log(todo);
+    this.todos[todo.id - 1] = todo;
+  }
+
+  // deleteTodo(todo) {
+  //   this.todos.splice([todo.id - 1], 1)
+  // }
+
+  generateId(todo) {
+    return this.todos.length === 0 ? this.makeFirstId(todo) : this.newId(todo);
+  }
+
+  makeFirstId(todo) {
+    const newTodo = todo;
+    newTodo.id = 1;
+    return newTodo;
+  }
+
+  newId(todo) {
+    let findId = this.todos[this.todos.length - 1].id;
+    todo.id = ++findId;
+    return todo;
   }
 
   private initForm() {

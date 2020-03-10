@@ -5,16 +5,15 @@
           <mat-expansion-panel-header>
             <mat-panel-title>
               <div>
-                Todo Name
+                {{ todo.name }}
               </div>
             </mat-panel-title>
           </mat-expansion-panel-header>
 
-          <p>Details about the task</p>
-          <div class="d-flex flex-column align-items-start">
-            <button mat-button [routerLink]="['/todos/details']">Edit task</button>
-            <button mat-button>Delete</button>
-          </div>
+          <p>
+            <strong>Details: </strong>
+            {{ todo.description }}
+          </p>
         </mat-expansion-panel>
       </mat-accordion>
     </ion-item>

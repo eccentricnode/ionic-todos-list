@@ -32,7 +32,6 @@ export class EditModalComponent {
   submit(directive) {
     this.submittedValue = this.group.value;
     directive.resetForm();
-    console.log(this.submittedValue);
     this.modalController.dismiss(this.submittedValue);
   }
 
