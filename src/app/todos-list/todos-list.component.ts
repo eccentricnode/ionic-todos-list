@@ -29,14 +29,15 @@ export class TodosListComponent implements OnInit {
     const modal = await this.modalController.create({
       component: EditModalComponent,
       componentProps: {
-        form: this.form
+        group: this.form
       }
     });
 
     // grabs form value from modal, on modal dismiss
     modal.onWillDismiss()
       .then((data) => {
-        this.todos = data;
+        this.todos = data['data'];
+        console.log(this.todos);
       });
 
     return await modal.present();

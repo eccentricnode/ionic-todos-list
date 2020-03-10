@@ -13,11 +13,11 @@ export class EditModalComponent {
   selectedTodo;
   submittedValue;
 
-  @Input() form: FormGroup;
+  group: FormGroup;
   @Input() set todo(value) {
     this.selectedTodo = value;
     if (!value) return;
-    this.form.patchValue({
+    this.group.patchValue({
       id: value.id,
       name: value.name,
       description: value.description
@@ -30,17 +30,18 @@ export class EditModalComponent {
 
 
   submit(directive: NgForm) {
-    this.submittedValue = this.form.value;
+    this.submittedValue = this.group.value;
+    directive.resetForm();
     console.log(this.submittedValue);
     this.modalController.dismiss(this.submittedValue);
   }
 
   cancel() {
-    this.form.reset();
+    this.group.reset();
   }
 
   validateField(control: string, directive: NgForm) {
-    return this.form.get(control).invalid && directive.submitted;
+    return this.group.get(control).invalid && directive.submitted;
   }
 
   dismiss() {
