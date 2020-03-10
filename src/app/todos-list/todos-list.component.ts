@@ -36,14 +36,14 @@ export class TodosListComponent implements OnInit {
     // grabs form value from modal, on modal dismiss
     modal.onWillDismiss()
       .then((data) => {
-        this.submit(data['data']);
+        this.submit(data[`data`]);
       });
 
     return await modal.present();
   }
 
   selectItem(item) {
-    return this.todos.filter(i => i.id === item)
+    return this.todos.filter(i => i.id === item);
   }
 
   submit(todo) {
