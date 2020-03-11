@@ -16,7 +16,7 @@ export class EditModalComponent {
   group: FormGroup;
   @Input() set todo(value) {
     this.selectedTodo = value;
-    if (!value) return;
+    if (!value) { return; }
     this.group.patchValue({
       id: value.id,
       name: value.name,
